@@ -47,6 +47,7 @@ cd backend/src
 ### Armazenamento seguro de JWT
 - **Access token em memória** (state do React).
 - **Refresh token em cookie HttpOnly** (emitido pelo backend).
+- **Proxy de desenvolvimento**: o Vite redireciona `/api` para `https://localhost:5001` com `secure: false` para evitar erros de certificado durante o desenvolvimento.
 
 ## Como rodar
 
