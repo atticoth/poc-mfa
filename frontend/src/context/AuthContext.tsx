@@ -7,6 +7,7 @@ interface AuthState {
 }
 
 interface AuthContextValue extends AuthState {
+
   register: (email: string, password: string) => Promise<void>;
   login: (email: string, password: string) => Promise<{ requiresTwoFactor: boolean; userId?: string }>;
   verifyTwoFactor: (userId: string, code: string) => Promise<void>;
@@ -27,6 +28,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       delete api.defaults.headers.common.Authorization;
     }
   }, [accessToken]);
+
 
   const register = useCallback(async (email: string, password: string) => {
     await api.post('/auth/register', { email, password });
