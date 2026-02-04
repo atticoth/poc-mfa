@@ -75,7 +75,7 @@ builder.Services.AddControllers();
 var app = builder.Build();
 
 app.UseHsts();
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseCors("frontend");
 app.UseRateLimiter();
 app.UseAuthentication();
