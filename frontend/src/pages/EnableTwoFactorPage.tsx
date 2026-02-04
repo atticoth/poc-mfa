@@ -4,16 +4,19 @@ import { api } from '../services/api';
 export const EnableTwoFactorPage = () => {
   const [qrUri, setQrUri] = useState('');
   const [secret, setSecret] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleEnable = async () => {
     const response = await api.post('/auth/2fa/enable');
     setQrUri(response.data.qrUri);
     setSecret(response.data.secret);
+    setMessage('2FA ativado. Escaneie o QR Code no Google Authenticator.');
   };
 
   return (
     <div>
       <h1>Ativar 2FA</h1>
+      {message && <p>{message}</p>}
       <button onClick={handleEnable}>Gerar QRCode</button>
       {qrUri && (
         <div>
