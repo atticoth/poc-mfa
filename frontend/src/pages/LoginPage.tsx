@@ -38,6 +38,9 @@ export const LoginPage = () => {
         />
         <button type="submit">Entrar</button>
       </form>
+      <button type="button" onClick={() => navigate('/register')}>
+        Criar conta
+      </button>
     </div>
   );
 };
