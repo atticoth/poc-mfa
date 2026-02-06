@@ -7,7 +7,7 @@ export const EnableTwoFactorPage = () => {
   const [message, setMessage] = useState('');
 
   const handleEnable = async () => {
-    const response = await api.post('/auth/2fa/enable');
+    const response = await api.post('https://localhost:61042/api/auth/2fa/enable');
     setQrUri(response.data.qrUri);
     setSecret(response.data.secret);
     setMessage('2FA ativado. Escaneie o QR Code no Google Authenticator.');
