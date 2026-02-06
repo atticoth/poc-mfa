@@ -26,7 +26,6 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     })
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
-
 builder.Services
     .AddAuthentication(options =>
     {
@@ -37,7 +36,6 @@ builder.Services
     .AddJwtBearer(options =>
     {
         var jwt = builder.Configuration.GetSection("Jwt");
-
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,

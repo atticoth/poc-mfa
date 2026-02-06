@@ -38,6 +38,9 @@ export const TwoFactorPage = () => {
         <input value={code} onChange={(e) => setCode(e.target.value)} placeholder="Código" />
         <button type="submit">Validar</button>
       </form>
+      <button type="button" onClick={() => navigate('/2fa/enable')}>
+        Configurar Google Authenticator
+      </button>
     </div>
   );
 };
