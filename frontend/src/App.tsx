@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ProtectedRoute } from './guards/ProtectedRoute';
 import { LoginPage } from './pages/LoginPage';
-
 import { RegisterPage } from './pages/RegisterPage';
 import { TwoFactorPage } from './pages/TwoFactorPage';
 import { EnableTwoFactorPage } from './pages/EnableTwoFactorPage';
