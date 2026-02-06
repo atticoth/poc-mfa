@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const login = useCallback(async (email: string, password: string) => {
-    const response = await api.post('https://localhost:61042/api/auth/login', { email, password });
+    const response = await api.post('https://localhost:61042/api/auth/login', {
     if (response.data.requiresTwoFactor) {
       return { requiresTwoFactor: true, userId: response.data.userId };
     }
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const verifyTwoFactor = useCallback(async (id: string, code: string) => {
-    const response = await api.post('https://localhost:61042/api/auth/login/2fa', { userId: id, code });
+    const response = await api.post('https://localhost:61042/api/auth/login/2fa', { u
     setAccessToken(response.data.accessToken);
     setUserId(null);
   }, []);
