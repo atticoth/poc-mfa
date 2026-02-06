@@ -10,7 +10,7 @@ export const DashboardPage = () => {
 
   const handleDisableTwoFactor = async () => {
     setMessage('');
-    await api.post('/auth/2fa/disable');
+    await api.post('https://localhost:61042/api/auth/2fa/disable');
     setMessage('2FA desabilitado.');
   };
 

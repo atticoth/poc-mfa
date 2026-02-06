@@ -29,33 +29,51 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, [accessToken]);
 
   const register = useCallback(async (email: string, password: string) => {
-    await api.post('/auth/register', { email, password });
+    await api.post('https://localhost:61042/api/auth/register', { email, password });
   }, []);
 
-  const login = useCallback(async (email: string, password: string) => {
-    const response = await api.post('/auth/login', { email, password });
+const login = useCallback(
+  async (email: string, password: string) => {
+    const response = await api.post(
+      'https://localhost:61042/api/auth/login',
+      { email, password }
+    );
+
     if (response.data.requiresTwoFactor) {
+      setUserId(response.data.userId);
       return { requiresTwoFactor: true, userId: response.data.userId };
     }
 
     setAccessToken(response.data.accessToken);
     setUserId(null);
-    return { requiresTwoFactor: false };
-  }, []);
 
-  const verifyTwoFactor = useCallback(async (id: string, code: string) => {
-    const response = await api.post('/auth/login/2fa', { userId: id, code });
+    return { requiresTwoFactor: false };
+  },
+  []
+);
+
+
+const verifyTwoFactor = useCallback(
+  async (id: string, code: string) => {
+    const response = await api.post(
+      'https://localhost:61042/api/auth/login/2fa',
+      { userId: id, code }
+    );
+
     setAccessToken(response.data.accessToken);
     setUserId(null);
-  }, []);
+  },
+  []
+);
+
 
   const refresh = useCallback(async () => {
-    const response = await api.post('/auth/refresh');
+    const response = await api.post('https://localhost:61042/api/auth/refresh');
     setAccessToken(response.data.accessToken);
   }, []);
 
   const logout = useCallback(async () => {
-    await api.post('/auth/logout');
+    await api.post('https://localhost:61042/api/auth/logout');
     setAccessToken(null);
     setUserId(null);
   }, []);
